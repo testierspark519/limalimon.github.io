@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One Direction Songs</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('Coraline Dibujo.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        .star {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+            animation: twinkle 1.5s infinite;
+        }
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+            font-size: 14px;
+        }
+        @keyframes twinkle {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars with tooltips and links -->
+    <div class="star" style="top: 20%; left: 30%;" data-song="What Makes You Beautiful" data-lyrics="You don't know you're beautiful, that's what makes you beautiful." data-link="https://www.youtube.com/watch?v=QJO3ROT-A4E"></div>
+    <div class="star" style="top: 40%; left: 50%;" data-song="Little Things" data-lyrics="I’m in love with you, and all these little things." data-link="https://www.youtube.com/watch?v=xGPeNN9S0Fg"></div>
+    <div class="star" style="top: 30%; left: 70%;" data-song="Story of My Life" data-lyrics="The story of my life, I take her home." data-link="https://www.youtube.com/watch?v=W-TE_Ys4iwM"></div>
+    <div class="star" style="top: 60%; left: 20%;" data-song="Night Changes" data-lyrics="Even when the night changes, it will never change me and you." data-link="https://www.youtube.com/watch?v=sGbxmsDFVnE"></div>
+    <div class="star" style="top: 80%; left: 40%;" data-song="Best Song Ever" data-lyrics="And we danced all night to the best song ever." data-link="https://www.youtube.com/watch?v=o_v9MY_FMcw"></div>
+    <div class="star" style="top: 10%; left: 60%;" data-song="Drag Me Down" data-lyrics="All my life you stood by me, when no one else was ever behind me." data-link="https://www.youtube.com/watch?v=Jwgf3wmiA04"></div>
+    <div class="star" style="top: 50%; left: 10%;" data-song="One Thing" data-lyrics="So get out, get out, get out of my head, and fall into my arms instead." data-link="https://www.youtube.com/watch?v=Y1xs_xPb46M"></div>
+    <div class="star" style="top: 70%; left: 80%;" data-song="Kiss You" data-lyrics="If you don’t wanna take it slow, and you just wanna take me home." data-link="https://www.youtube.com/watch?v=T4cdfRohhcg"></div>
+    <div class="star" style="top: 90%; left: 60%;" data-song="Live While We're Young" data-lyrics="Let’s go crazy, crazy, crazy 'til we see the sun." data-link="https://www.youtube.com/watch?v=AbPED9bisSc"></div>
+    <div class="star" style="top: 35%; left: 15%;" data-song="You & I" data-lyrics="Nothing can come between you and I." data-link="https://www.youtube.com/watch?v=_kqQDCxRCzM"></div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const tooltip = document.getElementById('tooltip');
+
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', (e) => {
+                const song = star.getAttribute('data-song');
+                const lyrics = star.getAttribute('data-lyrics');
+
+                tooltip.innerHTML = `<strong>${song}</strong><br>${lyrics}`;
+                tooltip.style.display = 'block';
+                tooltip.style.top = `${e.pageY + 10}px`;
+                tooltip.style.left = `${e.pageX + 10}px`;
+            });
+
+            star.addEventListener('mouseleave', () => {
+                tooltip.style.display = 'none';
+            });
+
+            star.addEventListener('click', () => {
+                const link = star.getAttribute('data-link');
+                window.open(link, '_blank');
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (tooltip.style.display === 'block') {
+                tooltip.style.top = `${e.pageY + 10}px`;
+                tooltip.style.left = `${e.pageX + 10}px`;
+            }
+        });
+    </script>
+</body>
+</html>
